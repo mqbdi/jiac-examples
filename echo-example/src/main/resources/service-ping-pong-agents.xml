@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+	<import resource="classpath:de/dailab/jiactng/agentcore/conf/AgentNode.xml" />
+	<import resource="classpath:de/dailab/jiactng/agentcore/conf/JMSMessaging.xml" />
+	<import resource="classpath:de/dailab/jiactng/agentcore/conf/Agent.xml" />
+
+	<bean name="PingPongNode" parent="NodeWithJMX">
+		<property name="agents">
+			<list>
+				<bean name="Pinger1" parent="ServicePingAgent" />
+				<bean name="Pinger2" parent="ServicePingAgent" />
+<!-- 				<bean name="Pinger3" parent="ServicePingAgent" /> -->
+<!-- 				<bean name="Pinger4" parent="ServicePingAgent" /> -->
+<!-- 				<bean name="Pinger5" parent="ServicePingAgent" /> -->
+<!-- 				<bean name="Pinger6" parent="ServicePingAgent" /> -->
+			</list>
+		</property>
+	</bean>
+
+	<bean name="ServicePingAgent" parent="SimpleAgent" singleton="false"
+		abstract="true">
+		<property name="agentBeans">
+			<list>
+				<bean name="ServicePingAgentBean" class="de.btopia.examples.beans.ServicePingAgentBean">
+					<property name="logLevel" value="info" />
+					<property name="executeInterval" value="2000" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+</beans>
+
