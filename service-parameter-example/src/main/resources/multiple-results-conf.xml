@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+
+	<import resource="classpath:de/dailab/jiactng/agentcore/conf/AgentNode.xml" />
+	<import resource="classpath:de/dailab/jiactng/agentcore/conf/Agent.xml" />
+
+	<bean name="ExampleNodeJMX" parent="NodeWithJMX">
+		<property name="agents">
+			<list>
+				<bean name="Alice"   parent="InitiatorAgent" />
+				<bean name="Bob"     parent="ResponseAgent" />
+			</list>
+		</property>
+	</bean>
+	
+	<bean name="InitiatorAgent" parent="SimpleAgent" singleton="false" abstract="true">
+		<property name="agentBeans">
+			<list>
+				<bean name="InitiatorAgentBean" class="de.btopia.examples.beans.InitiatorAgentBean" >
+					<property name="executeInterval" value="3000" />
+					<property name="logLevel" value="info" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean name="ResponseAgent" parent="SimpleAgent" singleton="false"
+		abstract="true">
+		<property name="agentBeans">
+			<list>
+				<bean name="ResponseAgentBean" class="de.btopia.examples.beans.ResponseAgentBean" />
+			</list>
+		</property>
+	</bean>
+
+
+</beans>
