@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>de.btopia.jiacv.examples</groupId>
-	<artifactId>PingPongAgents</artifactId>
+	<artifactId>ServiceAgents</artifactId>
 	<version>0.0.1</version>
 	<packaging>jar</packaging>
 	<name>${project.groupId} - ${project.artifactId}</name>
@@ -12,7 +12,6 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<jiac.version>5.1.2</jiac.version>
 	</properties>
 
 	<developers>
@@ -37,7 +36,7 @@
 		<dependency>
 			<groupId>de.dailab.jiactng</groupId>
 			<artifactId>agentCore</artifactId>
-			<version>${jiac.version}</version>
+			<version>[5.1.1,5.1.99]</version>
 		</dependency>
 
 	</dependencies>
@@ -80,29 +79,6 @@
 					<downloadJavadocs>true</downloadJavadocs>
 				</configuration>
 			</plugin>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-javadoc-plugin</artifactId>
-				<version>2.7</version>
-				<configuration>
-					<links>
-						<link>http://download.oracle.com/javase/6/docs/api/</link>
-						<link>http://repositories.dai-labor.de/sites/jiactng/${jiac.version}/agentCoreAPI/apidocs/</link>
-						<link>http://repositories.dai-labor.de/sites/jiactng/${jiac.version}/agentCore/apidocs/</link>
-						<link>http://static.springsource.org/spring/docs/2.0.x/api/</link>
-					</links>
-					<quiet>true</quiet>
-				</configuration>
-				<executions>
-					<execution>
-						<id>attach-javadocs</id>
-						<goals>
-							<goal>jar</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-
 		</plugins>
 	</build>
 
