@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+
+	<import resource="classpath:de/dailab/jiactng/agentcore/conf/AgentNode.xml" />
+	<import resource="classpath:de/dailab/jiactng/agentcore/conf/Agent.xml" />
+
+	<bean name="ExampleNodeJMX" parent="NodeWithDirectory">
+		<property name="agents">
+			<list>
+				<ref bean="ServiceProviderAgent" />
+				<ref bean="ServiceInvocationAgent" />
+			</list>
+		</property>
+	</bean>
+
+	<bean name="ServiceProviderAgent" parent="SimpleAgent" singleton="true"
+		abstract="false">
+		<property name="agentBeans">
+			<list>
+				<bean name="ServiceProvider" class="de.btopia.examples.beans.ServiceProviderBean" />
+			</list>
+		</property>
+	</bean>
+
+	<bean name="ServiceInvocationAgent" parent="SimpleAgent"
+		singleton="true" abstract="false">
+		<property name="agentBeans">
+			<list>
+				<bean name="ServiceInvoker" class="de.btopia.examples.beans.ServiceInvokerBean">
+					<property name="executeInterval" value="4500" />
+					<property name="logLevel" value="warn" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+</beans>
