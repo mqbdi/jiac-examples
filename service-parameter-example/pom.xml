@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>de.btopia.jiacv.examples</groupId>
-	<artifactId>ServiceAgents</artifactId>
+	<artifactId>ServiceParameters</artifactId>
 	<version>0.0.1</version>
 	<packaging>jar</packaging>
 	<name>${project.groupId} - ${project.artifactId}</name>
